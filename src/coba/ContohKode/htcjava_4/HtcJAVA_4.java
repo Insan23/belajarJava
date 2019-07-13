@@ -1,0 +1,70 @@
+package coba.ContohKode.htcjava_4;
+//ada 3 nputan dari user, input pertama jumlah data, ke2 data arraynya, ke3 data yg dicari
+//apabila ketemu, ketemunya berapa kali, dan berapa saja indeksnya
+
+import java.util.*;
+
+public class HtcJAVA_4 {
+
+    public static void main(String[] args) {
+        //linear search
+        int data[] = {21, 4, 94, 14, 1, 9, 2};
+        int key = 234;
+        for (int i = 0; i < data.length; i++) {
+            if (key == data[i]) {
+                System.out.println("Data terdapat pada index " + (i + 1));
+                break;
+            } else if (i == data.length - 1) {              //jika data tidak ditemukan
+                System.out.println("Data tidak ditemukan!!!");
+            }
+        }
+
+        //binary search
+        int A[] = {1, 3, 5, 7, 9, 13, 25, 65, 70};
+        int N = A.length;
+        int cari = 65;
+        int batasAtas = 0, batasBawah = N - 1, tengah = 0;
+        boolean ketemu = false;
+        while ((batasAtas <= batasBawah) && (ketemu == false)) {
+            tengah = (batasAtas + batasBawah) / 2;
+            if (A[tengah] == cari) {
+                ketemu = true;
+            } else if (A[tengah] <= cari) {
+                batasAtas = tengah + 1;
+            } else {
+                batasBawah = tengah - 1;
+            }
+        }
+        if (ketemu) {
+            System.out.println("Angka " + cari + " ditemukan pada indeks " + (tengah + 1));
+        } else {
+            System.out.println("Angka " + cari + " tidak ditemukan");
+        }
+
+        //fungsi sorting <BUBBLE SORT>
+        int dataSort[] = {6, 3, 5, 7, 2, 8, 1, 5, 43, 7};
+        int dataUrut[] = bubbleSort(dataSort);
+        cetakData(dataUrut);
+    }
+
+    //bubble sort ascending
+    public static int[] bubbleSort(int data[]) {
+        for (int i = 1; i < data.length; i++) {
+            for (int j = data.length - 1; j >= i; j--) {
+                if (data[j - 1] > data[j]) {
+                    int temp = data[j - 1];
+                    data[j - 1] = data[j];
+                    data[j] = temp;
+                }
+            }
+        }
+        return data;
+    }
+
+    public static void cetakData(int data[]) {
+        for (int i = 0; i < data.length; i++) {
+            System.out.print(" " + data[i]);
+        }
+    }
+
+}
