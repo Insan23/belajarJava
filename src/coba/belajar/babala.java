@@ -1,4 +1,4 @@
-package coba;
+package coba.belajar;
 
 import java.util.Scanner;
 
